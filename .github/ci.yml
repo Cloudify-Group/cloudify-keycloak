@@ -3,8 +3,10 @@ name: CI for Keycloak Resources and Docker Compose
 on:
   push:
     branches:
-      - main
+      - "*"
   pull_request:
+    branches:
+      - "*"
 
 jobs:
   lint:
