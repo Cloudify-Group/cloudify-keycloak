@@ -1,0 +1,12 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+tasks.register('composeUp', Exec) {
+    commandLine 'docker-compose', 'up', '-d'
+}
+
+tasks.register('composeDown', Exec) {
+    commandLine 'docker-compose', 'down'
+}

@@ -1,0 +1,61 @@
+{
+  "realm": "cloudify",
+  "enabled": true,
+  "loginTheme": "cloudify-theme",
+  "registrationAllowed": true,
+  "clients": [
+    {
+      "clientId": "cloudify-client",
+      "enabled": true,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "${CLIENT_SECRET}",
+      "redirectUris": [
+        "http://localhost:8080/*"
+      ],
+      "directAccessGrantsEnabled": true,
+      "publicClient": false,
+      "protocol": "openid-connect"
+    }
+  ],
+  "users": [
+    {
+      "username": "testuser",
+      "enabled": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "${USER_PASSWORD}",
+          "temporary": false
+        }
+      ]
+    }
+  ],
+  "identityProviders": [
+    {
+      "alias": "google",
+      "providerId": "google",
+      "enabled": true,
+      "config": {
+        "clientId": "${GOOGLE_CLIENT_ID}",
+        "clientSecret": "${GOOGLE_CLIENT_SECRET}",
+        "scope": "openid profile email",
+        "login.uri": "https://accounts.google.com/o/oauth2/auth",
+        "token.uri": "https://oauth2.googleapis.com/token",
+        "userinfo.uri": "https://www.googleapis.com/oauth2/v3/userinfo"
+      }
+    },
+    {
+      "alias": "facebook",
+      "providerId": "facebook",
+      "enabled": true,
+      "config": {
+        "clientId": "${FACEBOOK_CLIENT_ID}",
+        "clientSecret": "${FACEBOOK_CLIENT_SECRET}",
+        "scope": "email",
+        "login.uri": "https://www.facebook.com/v10.0/dialog/oauth",
+        "token.uri": "https://graph.facebook.com/v10.0/oauth/access_token",
+        "userinfo.uri": "https://graph.facebook.com/v10.0/me"
+      }
+    }
+  ]
+}
