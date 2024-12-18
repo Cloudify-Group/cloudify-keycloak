@@ -22,8 +22,12 @@ jobs:
           languages: "YAML,JSON"
 
       - name: Lint Dockerfile
-        uses: hadolint/hadolint-action@v2
-
+        uses: hadolint/hadolint-action@v3.1.0  # Użycie wersji v3.1.0
+        with:
+          dockerfile: Dockerfile  # Ścieżka do pliku Dockerfile
+          no-color: false  # Opcjonalne: kolorowy output
+          failure-threshold: warning  # Progi na poziomie ostrzeżeń
+          
   build-and-test:
     name: Build and Test with Docker Compose
     runs-on: ubuntu-latest
